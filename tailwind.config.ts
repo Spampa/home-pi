@@ -15,11 +15,12 @@ const config: Config = {
       },
       container: {
         padding: {
-          DEFAULT: '1rem',
-          sm: '2rem',
-          lg: '4rem',
-          xl: '5rem',
-          '2xl': '6rem',
+          DEFAULT: '1rem', // Padding predefinito per tutti i dispositivi
+          sm: '1.5rem',    // Piccoli dispositivi (smartphone)
+          md: '2rem',      // Dispositivi medi (tablet)
+          lg: '3rem',      // Grandi dispositivi (laptop)
+          xl: '4rem',      // Extra grandi dispositivi (desktop)
+          '2xl': '5rem',   // Dispositivi molto grandi (grandi schermi)
         },
       },
     },
