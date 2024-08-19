@@ -13,7 +13,7 @@ export default function Login() {
                     <TextInput type='text' label="Username" icon={<UserIcon />} />
                     <TextInput type='password' label="Password" icon={<LockClosedIcon />} />
                 </div>
-                <PrimaryButton label='Accedi' />
+                <PrimaryButton label='Accedi' action={() => {}} />
             </div>
         </div>
     )

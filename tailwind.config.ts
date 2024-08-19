@@ -14,14 +14,8 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       container: {
-        padding: {
-          DEFAULT: '1rem', // Padding predefinito per tutti i dispositivi
-          sm: '1.5rem',    // Piccoli dispositivi (smartphone)
-          md: '2rem',      // Dispositivi medi (tablet)
-          lg: '3rem',      // Grandi dispositivi (laptop)
-          xl: '4rem',      // Extra grandi dispositivi (desktop)
-          '2xl': '5rem',   // Dispositivi molto grandi (grandi schermi)
-        },
+        center: true,
+        padding: "1rem",
       },
     },
   },

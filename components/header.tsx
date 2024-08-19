@@ -8,7 +8,6 @@ export const Header = () => {
                 <h1 className="text-xl font-bold">HomePi</h1>
             </div>
             <div className="flex flex-row gap-3 items-center align-middle">
-                <IconButton size="8" icon={<PlusCircleIcon />} />
                 <h3 className="text-lg font-semibold">Hi User!</h3>
             </div>
         </header>

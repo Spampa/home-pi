@@ -1,13 +1,16 @@
 import React from "react";
 
 interface IconButtonProps {
-    size: string;
     icon: React.ReactNode;
+    action: () => void;
 }
 
-export const IconButton: React.FC<IconButtonProps> = ({size, icon}) => {
+export const IconButton: React.FC<IconButtonProps> = ({icon, action}) => {
     return(
-        <button className={`size-${size} text-blue-100 hover:text-blue-50`}>
+        <button 
+            className={`size-8 text-blue-100 hover:text-blue-50`}
+            onClick={action}
+        >
             {icon}
         </button>
     )
