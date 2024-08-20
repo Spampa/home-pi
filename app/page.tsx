@@ -1,3 +1,5 @@
+"use client"
+
 import { TextInput } from '@/components/textInput';
 import { PrimaryButton } from '@/components/primaryButton';
 
@@ -13,7 +15,7 @@ export default function Login() {
                     <TextInput type='text' label="Username" icon={<UserIcon />} />
                     <TextInput type='password' label="Password" icon={<LockClosedIcon />} />
                 </div>
-                <PrimaryButton label='Accedi' action={() => {}} />
+                <PrimaryButton label='Accedi' action={() => {console.log("Accesso")}} />
             </div>
         </div>
     )
