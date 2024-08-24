@@ -3,11 +3,13 @@ import React, { useState } from "react";
 interface TextInputProps {
     label: string;
     type: string;
+    name: string;
+    required?: boolean;
     icon: React.ReactNode;
 }
 
 
-export const TextInput: React.FC<TextInputProps> = ({ label, type, icon }) => {
+export const TextInput: React.FC<TextInputProps> = ({ label, type, name, required = false, icon }) => {
     const [isFocus, setIsFocus] = useState(false);
     return (
         <div className={`flex flex-row items-center align-middle rounded-sm
@@ -26,6 +28,8 @@ export const TextInput: React.FC<TextInputProps> = ({ label, type, icon }) => {
                 onBlur={() => setIsFocus(false)}
                 type={type}
                 placeholder={label}
+                required={required}
+                name={name}
             />
         </div>
 
