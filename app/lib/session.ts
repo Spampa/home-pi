@@ -39,3 +39,7 @@ export async function createSession(username: string, role: string) {
         path: '/'
     })
 }
+
+export async function deleteSession() {
+    cookies().delete('session');
+}
