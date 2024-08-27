@@ -3,6 +3,9 @@
 #environment
 .env
 
+#db
+./prisma/homepi.db
+
 # dependencies
 /node_modules
 /.pnp
