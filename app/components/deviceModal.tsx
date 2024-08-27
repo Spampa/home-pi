@@ -22,7 +22,7 @@ export const DeviceModal: React.FC<DeviceModalProps> = ({isOpen, closeModal}) =>
                         <IconButton action={closeModal} icon={<XCircleIcon />} />
                     </div>
                     <TextInput name="deviceName" label="Device Name" type="text" icon={<PencilSquareIcon />} />
-                    <PrimarySelect label="Device" elements={[{key: 'PC', name: 'PC'}]}/>
+                    <PrimarySelect name="deviceType" label="Device" elements={[{id: 'PC', name: 'PC'}]}/>
                     <PrimaryButton label="Crea" action={() => null}/>
                 </div>
             </div>

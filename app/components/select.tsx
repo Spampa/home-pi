@@ -1,23 +1,24 @@
 interface Element {
-    key: string
+    id: string
     name: string
 }
 
 interface SelectProps {
-    label: string;
+    name: string
+    label: string
     elements: Array<Element>
 }
 
 
-export const PrimarySelect: React.FC<SelectProps> = ({ label, elements }) => {
+export const PrimarySelect: React.FC<SelectProps> = ({ name, label, elements }) => {
     return (
         <div className="w-full">
             <p>{label}</p>
-            <select className="w-full p-2 text-black rounded-sm outline outline-2 outline-blue-200 focus:outline-blue-600">
+            <select name={name} className="w-full p-2 text-black rounded-sm outline outline-2 outline-blue-200 focus:outline-blue-600">
                 {
                     elements.map((element, index) => {
                         return (
-                            <option key={index} value={element.key}>{element.name}</option>
+                            <option key={index} value={element.id}>{element.name}</option>
                         )
                     })
                 }
