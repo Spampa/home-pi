@@ -4,7 +4,10 @@
 .env
 
 #db
-./prisma/homepi.db
+/prisma/homepi.db
+/prisma/migrations/
+/prisma/homepi.db-journal
+
 
 # dependencies
 /node_modules

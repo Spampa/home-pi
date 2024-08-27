@@ -1,13 +1,15 @@
 "use client"
 
-import { Header } from "@/components/header"
-import { Card } from "@/components/card"
-import { DeviceModal } from "@/components/deviceModal"
-import { PrimaryButton } from "@/components/primaryButton"
+import { Header } from "@/app/components/header"
+import { Card } from "@/app/components/card"
+import { DeviceModal } from "@/app/components/deviceModal"
+import { PrimaryButton } from "@/app/components/primaryButton"
 import { AnimatePresence, motion } from "framer-motion"
 import { useState } from "react"
 
-export default function Dashboard() {
+import { userInfo } from "../lib/userInfo"
+
+export default function UserDashboard() {
     const [isOpen, setIsOpen] = useState(false);
 
     function openModal() {
