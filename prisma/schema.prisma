@@ -7,7 +7,7 @@ datasource db {
 }
 
 generator client {
-  provider        = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 model Role {
@@ -24,3 +24,16 @@ model User {
   roleId   Int
 }
 
+model DeviceType {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+  Device Device[]
+}
+
+model Device {
+  id   Int    @id @default(autoincrement())
+  name String
+  ip   String
+  deviceType DeviceType @relation(fields: [typeId], references: [id])
+  typeId Int
+}

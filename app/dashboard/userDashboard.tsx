@@ -5,10 +5,18 @@ import { Card } from "@/app/components/card"
 import { DeviceModal } from "@/app/components/deviceModal"
 import { PrimaryButton } from "@/app/components/primaryButton"
 import { AnimatePresence, motion } from "framer-motion"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+
+interface Device {
+    id: Number
+    name: string
+    ip: string
+}
 
 export default function UserDashboard() {
     const [isOpen, setIsOpen] = useState(false);
+
+    const [ devices, setDevices ] = useState([]);
 
     function openModal() {
         setIsOpen(true);
@@ -18,6 +26,12 @@ export default function UserDashboard() {
         setIsOpen(false);
     }
 
+    useEffect(() => {
+        fetch('/api/devices')
+        .then(res => res.json())
+        .then(data => setDevices(data));
+    }, []);
+
     return (
         <main>
             <Header />
@@ -26,8 +40,9 @@ export default function UserDashboard() {
                     <PrimaryButton label="Add Device" action={openModal} />
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-2">
-                    <Card name="PC Desktop" ip="192.168.1.7" iconName="PowerIcon" />
-                    <Card name="Pi Pico Garage" ip="192.168.1.13" iconName="CpuChipIcon" />
+                    {
+                        devices.map((device: Device) => <Card key={device.id.toString()} name={device.name} ip={device.ip} iconName="PowerIcon" />)
+                    }
                 </div>
             </div>
             <AnimatePresence mode="wait" initial={false}>

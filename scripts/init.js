@@ -20,6 +20,21 @@ async function  initDB() {
             }
         })
     }
+
+    const types = [{ name: 'PC' }, { name: 'Microcontroller' }]
+    id = 1;
+    for (const type of types){
+        await prisma.deviceType.upsert({
+            where: {
+                name: type.name
+            },
+            update: {},
+            create: {
+                id: id++,
+                name: type.name
+            }
+        })
+    }
 }
 
 async function createAdmin(username, password){

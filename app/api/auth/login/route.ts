@@ -15,8 +15,6 @@ export async function POST(req: Request){
             role: true
         }
     });
-    
-    console.log(user);
 
     if(!user){
         return NextResponse.json({success: false, error: "User not found"}, { status: 404 });
