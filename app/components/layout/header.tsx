@@ -2,9 +2,9 @@
 
 import { logout } from "@/app/actions/logout";
 
-import { IconButton } from "./iconButton";
+import { IconButton } from "@/app/components/ui/buttons/iconButton";
 import { ArrowLeftStartOnRectangleIcon } from "@heroicons/react/24/solid";
-import { userInfo } from "../lib/userInfo";
+import { userInfo } from "@/app/lib/userInfo";
 import { useEffect, useState } from "react";
 
 export const Header = () => {

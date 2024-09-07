@@ -3,8 +3,8 @@ import { FormEvent } from 'react';
 import { useRouter } from 'next/navigation'
 
 //components
-import { TextInput } from '@/app/components/textInput';
-import { PrimaryButton } from '@/app/components/primaryButton';
+import { TextInput } from '@/app/components/ui/textInput';
+import { PrimaryButton } from '@/app/components/ui/buttons/primaryButton';
 
 //icons
 import { UserIcon, LockClosedIcon } from '@heroicons/react/24/solid';

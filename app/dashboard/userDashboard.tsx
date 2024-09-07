@@ -1,11 +1,11 @@
 "use client"
 
-import { Header } from "@/app/components/header"
-import { Card } from "@/app/components/card"
-import { DeviceModal } from "@/app/components/deviceModal"
-import { PrimaryButton } from "@/app/components/primaryButton"
+import { Header } from "@/app/components/layout/header"
+import { DeviceModal } from "@/app/components/ui/deviceModal"
+import { ToolButton } from "../components/ui/buttons/toolButton"
 import { AnimatePresence, motion } from "framer-motion"
-import { useEffect, useState } from "react"
+import { DevicesContainer } from "../components/dashboard/devicesContainer"
+import { useState } from "react"
 
 interface Device {
     id: Number
@@ -14,46 +14,28 @@ interface Device {
 }
 
 export default function UserDashboard() {
-    const [isOpen, setIsOpen] = useState(false);
-
-    const [ devices, setDevices ] = useState([]);
-
-    function openModal() {
-        setIsOpen(true);
-    }
-
-    function closeModal() {
-        setIsOpen(false);
-    }
-
-    useEffect(() => {
-        fetch('/api/devices')
-        .then(res => res.json())
-        .then(data => setDevices(data));
-    }, []);
+    const [deviceIsOpen, deviceSetIsOpen] = useState(false);
 
     return (
         <main>
             <Header />
             <div className="container mt-6 flex flex-col gap-2">
                 <div>
-                    <PrimaryButton label="Add Device" action={openModal} />
+                    <div className="flex flex-row gap-2">
+                        <ToolButton label="Add Device" iconName="PlusCircleIcon" action={() => deviceSetIsOpen(true)} />
+                    </div>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-2">
-                    {
-                        devices.map((device: Device) => <Card key={device.id.toString()} name={device.name} ip={device.ip} iconName="PowerIcon" />)
-                    }
-                </div>
+                <DevicesContainer />
             </div>
             <AnimatePresence mode="wait" initial={false}>
                 {
-                    isOpen && (
+                    deviceIsOpen && (
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                         >
-                            <DeviceModal isOpen={isOpen} closeModal={closeModal} />
+                            <DeviceModal isOpen={deviceIsOpen} closeModal={() => deviceSetIsOpen(false)} />
                         </motion.div>
                     )
                 }

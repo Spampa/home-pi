@@ -9,7 +9,11 @@ export async function GET(){
         return NextResponse.json({ error: "Not Authorized" }, { status: 401 });
     }
 
-    const devices = await prisma.device.findMany();
+    const devices = await prisma.device.findMany({
+        include: {
+            deviceType: true
+        }
+    });
     return NextResponse.json(devices, {status: 200});
 }
 

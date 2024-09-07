@@ -5,8 +5,8 @@ import { FormEvent, useState, useEffect } from 'react';
 
 import { TextInput } from "./textInput"
 import { PencilSquareIcon, XCircleIcon, LockClosedIcon, CheckCircleIcon } from "@heroicons/react/24/solid"
-import { IconButton } from "./iconButton"
-import { PrimaryButton } from "./primaryButton"
+import { IconButton } from "./buttons/iconButton"
+import { PrimaryButton } from "./buttons/primaryButton"
 import { PrimarySelect } from "./select";
 
 interface UserModalProps {

@@ -25,15 +25,38 @@ model User {
 }
 
 model DeviceType {
-  id   Int    @id @default(autoincrement())
-  name String @unique
+  id     Int      @id @default(autoincrement())
+  name   String   @unique
+  icon   String
   Device Device[]
 }
 
 model Device {
-  id   Int    @id @default(autoincrement())
-  name String
-  ip   String
-  deviceType DeviceType @relation(fields: [typeId], references: [id])
-  typeId Int
+  id            Int             @id @default(autoincrement())
+  name          String
+  ip            String
+  deviceType    DeviceType      @relation(fields: [typeId], references: [id])
+  typeId        Int
+  DeviceMeasure DeviceMeasure[]
+}
+
+model MeasureType {
+  id            Int             @id @default(autoincrement())
+  unit          String
+  deviceMeasure DeviceMeasure[]
+}
+
+model DeviceMeasure {
+  id            Int         @id @default(autoincrement())
+  device        Device      @relation(fields: [deviceId], references: [id])
+  deviceId      Int
+  measureType   MeasureType @relation(fields: [measureTypeId], references: [id])
+  measureTypeId Int
+  notified      Boolean     @default(true)
+}
+
+model Measure {
+  id    Int      @id @default(autoincrement())
+  value String
+  time  DateTime @default(now())
 }

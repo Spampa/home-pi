@@ -21,7 +21,7 @@ async function  initDB() {
         })
     }
 
-    const types = [{ name: 'PC' }, { name: 'Microcontroller' }]
+    const types = [{ name: 'PC', icon: 'PowerIcon' }, { name: 'Microcontroller', icon: 'CpuChipIcon' }]
     id = 1;
     for (const type of types){
         await prisma.deviceType.upsert({
@@ -31,7 +31,8 @@ async function  initDB() {
             update: {},
             create: {
                 id: id++,
-                name: type.name
+                name: type.name,
+                icon: type.icon
             }
         })
     }

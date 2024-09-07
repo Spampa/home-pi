@@ -1,30 +1,16 @@
 "use client"
 
-import { Header } from "@/app/components/header"
-import { Card } from "@/app/components/card"
-import { DeviceModal } from "@/app/components/deviceModal"
-import { UserModal } from "../components/userModal"
-import { ToolButton } from "../components/toolButton"
+import { Header } from "@/app/components/layout/header"
+import { DeviceModal } from "@/app/components/ui/deviceModal"
+import { UserModal } from "../components/ui/userModal"
+import { ToolButton } from "../components/ui/buttons/toolButton"
 import { AnimatePresence, motion } from "framer-motion"
-import { useEffect, useState } from "react"
-
-interface Device {
-    id: Number
-    name: string
-    ip: string
-}
+import { DevicesContainer } from "../components/dashboard/devicesContainer"
+import { useState } from "react"
 
 export default function AdminDashboard() {
     const [deviceIsOpen, deviceSetIsOpen] = useState(false);
     const [userIsOpen, userSetIsOpen] = useState(false);
-
-    const [ devices, setDevices ] = useState([]);
-
-    useEffect(() => {
-        fetch('/api/devices')
-        .then(res => res.json())
-        .then(data => setDevices(data));
-    }, []);
 
     return (
         <main>
@@ -33,13 +19,8 @@ export default function AdminDashboard() {
                 <div className="flex flex-row gap-2">
                     <ToolButton label="Add Device" iconName="PlusCircleIcon" action={() => deviceSetIsOpen(true)} />
                     <ToolButton label="Add Users" iconName="UserPlusIcon" action={() => userSetIsOpen(true)} />
-                    <ToolButton label="Add Device Type" iconName="SquaresPlusIcon" />
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-2">
-                    {
-                        devices.map((device: Device) => <Card key={device.id.toString()} name={device.name} ip={device.ip} iconName="PowerIcon" />)
-                    }
-                </div>
+                <DevicesContainer />
             </div>
             <AnimatePresence mode="wait" initial={false}>
                 {

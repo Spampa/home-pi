@@ -2,9 +2,9 @@
 
 import { TextInput } from "./textInput"
 import { PencilSquareIcon, XCircleIcon, WifiIcon } from "@heroicons/react/24/solid"
-import { IconButton } from "./iconButton"
+import { IconButton } from "./buttons/iconButton"
 import { PrimarySelect } from "./select"
-import { PrimaryButton } from "./primaryButton"
+import { PrimaryButton } from "./buttons/primaryButton"
 import { FormEvent, useEffect, useState } from "react"
 
 interface DeviceModalProps {
